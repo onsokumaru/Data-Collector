@@ -19,9 +19,9 @@ namespace Data_Collector
         public Device() 
         {
             myData.Limit = 10;
+            // timer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(15).TotalMilliseconds);
             // create timer event - getting error that Timer does not have constructor that takes 4 arguments
             // going to try something different
-            // timer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(15).TotalMilliseconds);
             timer = new Timer(15000);
             // fire elapsed event when timer expires
             timer.Elapsed += OnTimedEvent;
@@ -66,6 +66,18 @@ namespace Data_Collector
             data = rand.Next(1, 11);
             myData.Enqueue(data);
             
+        }
+
+        // method to stop timer
+        public void TimerStop()
+        {
+            timer.Stop();
+        }
+
+        // method to start timer if the timer is stopped
+        public void TimerStart()
+        {
+            timer.Start();
         }
     }
 }
