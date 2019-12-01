@@ -17,6 +17,6 @@ namespace Data_Collector
 
         void StopCollecting(); // This method will stop the device.
 
-        int[] GetRawData(); // This method will retrieve a copy of all of the recent data 
+        FixedSizeQueue<int> GetRawData(); // This method will retrieve a copy of all of the recent data 
     }
 }

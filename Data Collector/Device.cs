@@ -10,15 +10,15 @@ namespace Data_Collector
     {
         private Timer timer;    // declare timer object
         private int data = 0;   // declare variable to hold randomly generated value for GetMeasurement() to return 
-        FixedSizeQueue<int> myData = new FixedSizeQueue<int>(); // see class declaration for description
+        //FixedSizeQueue<int> myData = new FixedSizeQueue<int>(); // see class declaration for description
         Random rand = new Random();     // create new instance of Random to geneate measurements
 
         // constructor
        
         public Device() 
         {
-            myData.Limit = 10;
-            timer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(15).TotalMilliseconds);
+            //myData.Limit = 10;
+            timer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(2).TotalMilliseconds);
             //// create timer event - getting error that Timer does not have constructor that takes 4 arguments
             //// going to try something different
             //timer = new Timer(15000);
@@ -36,18 +36,18 @@ namespace Data_Collector
             return data;
         }
 
-        public string History => PrintValues(myData);
+        //public string History => PrintValues(myData);
 
-        public string PrintValues(FixedSizeQueue<int> myQueue)
-        {
-            StringBuilder myString = new StringBuilder();
-            foreach ( var i in myQueue.q)
-            {
-                myString.AppendLine(i.ToString());
-            }
+        //public string PrintValues(FixedSizeQueue<int> myQueue)
+        //{
+        //    StringBuilder myString = new StringBuilder();
+        //    foreach ( var i in myQueue.q)
+        //    {
+        //        myString.AppendLine(i.ToString());
+        //    }
 
-            return myString.ToString();
-        }
+        //    return myString.ToString();
+        //}
 
         private async void timer_Tick(object state)
         {
@@ -58,7 +58,7 @@ namespace Data_Collector
             () =>
             {
                 data = rand.Next(1, 11);
-                myData.Enqueue(data);
+                //myData.Enqueue(data);
             });
         }
 
