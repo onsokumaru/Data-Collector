@@ -15,6 +15,8 @@
         <Button x:Name="StopCollectingBtn" Content="Stop Collecting Data" Margin="325,241,0,0" VerticalAlignment="Top" Width="166"/>
         <TextBlock x:Name="CollectingStateTBlk" HorizontalAlignment="Left" Margin="188,307,0,0" Text="State:" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" RenderTransformOrigin="0.534,0.69" Width="104" TextAlignment="Center"/>
         <TextBox x:Name="CurrentCollectingStateTBox" HorizontalAlignment="Left" Margin="325,300,0,0" Text="Collecting" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.669,-0.406" Width="166" TextAlignment="Center"/>
+        <TextBlock x:Name="currentValueTBlk" HorizontalAlignment="Left" Margin="128,373,0,0" Text="Current Value: " TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="171" RenderTransformOrigin="1.155,2.387" TextAlignment="Center"/>
+        <TextBlock x:Name="currentValueOutputTBlk" HorizontalAlignment="Left" Margin="325,373,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="105" TextAlignment="Center"/>
 
     </Grid>
 </Page>

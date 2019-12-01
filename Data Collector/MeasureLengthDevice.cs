@@ -72,7 +72,7 @@ namespace Data_Collector
 
         public int[] GetRawData()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
