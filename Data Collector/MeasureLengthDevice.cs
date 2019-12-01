@@ -61,13 +61,13 @@ namespace Data_Collector
         public void StartCollecting()
         {
             //throw new NotImplementedException();
-            dev.TimerStart();
+            //dev.TimerStart();
         }
 
         public void StopCollecting()
         {
             //throw new NotImplementedException();
-            dev.TimerStop();
+            //dev.TimerStop();
         }
 
         public int[] GetRawData()

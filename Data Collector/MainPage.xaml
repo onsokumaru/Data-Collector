@@ -9,6 +9,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <RadioButton x:Name="MetricRB" Content="Metric" Margin="128,113,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="ImperialRB" Content="Imperial" Margin="128,165,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <Button x:Name="StartCollectBtn" Content="Start Collecting Data" Margin="128,241,0,0" VerticalAlignment="Top" Width="166"/>
+        <Button x:Name="StopCollectingBtn" Content="Stop Collecting Data" Margin="325,241,0,0" VerticalAlignment="Top" Width="166"/>
+        <TextBlock x:Name="CollectingStateTBlk" HorizontalAlignment="Left" Margin="188,307,0,0" Text="State:" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" RenderTransformOrigin="0.534,0.69" Width="104" TextAlignment="Center"/>
+        <TextBox x:Name="CurrentCollectingStateTBox" HorizontalAlignment="Left" Margin="325,300,0,0" Text="Collecting" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.669,-0.406" Width="166" TextAlignment="Center"/>
 
     </Grid>
 </Page>
