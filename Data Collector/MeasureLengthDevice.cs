@@ -13,13 +13,22 @@ namespace Data_Collector
     {
         // fields
         const double CENTIMETERS_IN_AN_INCH = 2.54;
-        // private UnitsEnumeration unitsToUse; // not sure about this - could be just the naming
         private enum unitsOfMeasure { imperial, metric };
-        private int unitsToUse;
+        private unitsOfMeasure unitsToUse;
+        private unitsOfMeasure UnitsToUse
+        {
+            get { return this.unitsToUse; }
+            set { this.unitsToUse = value; }
+        }
         // changing dataCaptured to Fixed size queue instead of int array - to make updating easier as well as getting raw data
         // private int[] dataCaptured;
         FixedSizeQueue<int> dataCaptured;
+
         private int mostRecentMeasure = 0;
+        public int MostRecentMeasure
+        {
+            get { return this.mostRecentMeasure; }
+        }
         private Device dev;
         private Timer timer;
 
@@ -29,12 +38,14 @@ namespace Data_Collector
             // virtual device to provide measurements
             dev = new Device();
             timer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(15).TotalMilliseconds);
-            unitsToUse = (int)unitsOfMeasure.imperial;
+            unitsToUse = unitsOfMeasure.imperial;
             mostRecentMeasure = dev.GetMeasurement();
             dataCaptured = new FixedSizeQueue<int>();
             dataCaptured.Limit = 10;
-            dataCaptured.Enqueue(mostRecentMeasure);
+            //dataCaptured.Enqueue(mostRecentMeasure);
         }
+
+
 
         // methods
         private async void timer_Tick(object state)
@@ -49,7 +60,7 @@ namespace Data_Collector
         public decimal MetricValue()
         {
             //throw new NotImplementedException();
-            if(unitsToUse == (int)unitsOfMeasure.imperial)
+            if(unitsToUse == unitsOfMeasure.imperial)
             {
                 return (decimal)(mostRecentMeasure * CENTIMETERS_IN_AN_INCH);
             }
@@ -62,7 +73,7 @@ namespace Data_Collector
         public decimal ImperialValue()
         {
             //throw new NotImplementedException();
-            if (unitsToUse == (int)unitsOfMeasure.metric)
+            if (unitsToUse == unitsOfMeasure.metric)
             {
                 return (decimal)mostRecentMeasure; 
             }

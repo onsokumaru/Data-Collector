@@ -122,6 +122,7 @@
     <Compile Include="Device.cs" />
     <Compile Include="FixedSizeQueue.cs" />
     <Compile Include="IMeasuringDevice.cs" />
+    <Compile Include="MainDataDisplay.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

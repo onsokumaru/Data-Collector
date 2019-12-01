@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Threading;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,9 +25,25 @@ namespace Data_Collector
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        MeasureLengthDevice dataCollector = null;
+        MainDataDisplay displayData = null;
         public MainPage()
         {
             this.InitializeComponent();
+            dataCollector = new MeasureLengthDevice();
+            displayData = new MainDataDisplay
+            {
+                Measurement = dataCollector.MostRecentMeasure
+            };
+
+            ImperialRB.IsChecked = true;
+            bool collectingData = true;
+
+        }
+
+        private void getCurrentDataBtn_Click(object sender, RoutedEventArgs e)
+        {
+            currentValueOutputTBlk.Text = dataCollector.MostRecentMeasure.ToString();
         }
     }
 }
