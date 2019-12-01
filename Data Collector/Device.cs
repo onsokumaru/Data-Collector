@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
+//using System.Timers;
 
 namespace Data_Collector
 {
@@ -19,14 +18,14 @@ namespace Data_Collector
         public Device() 
         {
             myData.Limit = 10;
-            // timer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(15).TotalMilliseconds);
-            // create timer event - getting error that Timer does not have constructor that takes 4 arguments
-            // going to try something different
-            timer = new Timer(15000);
-            // fire elapsed event when timer expires
-            timer.Elapsed += OnTimedEvent;
-            timer.AutoReset = true;
-            timer.Enabled = true;
+            timer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(15).TotalMilliseconds);
+            //// create timer event - getting error that Timer does not have constructor that takes 4 arguments
+            //// going to try something different
+            //timer = new Timer(15000);
+            //// fire elapsed event when timer expires
+            //timer.Elapsed += OnTimedEvent;
+            //timer.AutoReset = true;
+            //timer.Enabled = true;
 
         }
 
@@ -50,34 +49,37 @@ namespace Data_Collector
             return myString.ToString();
         }
 
-        // commenting out because of error message in timer creaetion in Device constructor 
-        // going to try it a differnt way
+        private async void timer_Tick(object state)
+        {
+            // randomly generate new random number and update variable data
+            //data = rand.Next(1, 11);
+            //myData.Enqueue(data);
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
+            () =>
+            {
+                data = rand.Next(1, 11);
+                myData.Enqueue(data);
+            });
+        }
 
-        //private async void timer_Tick(object state)
+        //private void OnTimedEvent(Object source, ElapsedEventArgs e)
         //{
-        //    // randomly generate new random number and update variable data
+        //    // example from docs.microsoft.com
         //    data = rand.Next(1, 11);
         //    myData.Enqueue(data);
+            
         //}
 
-        private void OnTimedEvent(Object source, ElapsedEventArgs e)
-        {
-            // example from docs.microsoft.com
-            data = rand.Next(1, 11);
-            myData.Enqueue(data);
-            
-        }
-
         // method to stop timer
-        public void TimerStop()
-        {
-            timer.Stop();
-        }
+        //public void TimerStop()
+        //{
+        //    timer.Stop();
+        //}
 
-        // method to start timer if the timer is stopped
-        public void TimerStart()
-        {
-            timer.Start();
-        }
+        //// method to start timer if the timer is stopped
+        //public void TimerStart()
+        //{
+        //    timer.Start();
+        //}
     }
 }
