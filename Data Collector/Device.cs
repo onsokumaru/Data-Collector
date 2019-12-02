@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-//using System.Timers;
 
 namespace Data_Collector
 {
@@ -10,7 +7,6 @@ namespace Data_Collector
     {
         private Timer timer;    // declare timer object
         private int data = 0;   // declare variable to hold randomly generated value for GetMeasurement() to return 
-        //FixedSizeQueue<int> myData = new FixedSizeQueue<int>(); // see class declaration for description
         Random rand = new Random();     // create new instance of Random to geneate measurements
 
         // constructor
@@ -19,13 +15,6 @@ namespace Data_Collector
         {
             //myData.Limit = 10;
             timer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(2).TotalMilliseconds);
-            //// create timer event - getting error that Timer does not have constructor that takes 4 arguments
-            //// going to try something different
-            //timer = new Timer(15000);
-            //// fire elapsed event when timer expires
-            //timer.Elapsed += OnTimedEvent;
-            //timer.AutoReset = true;
-            //timer.Enabled = true;
 
         }
 
@@ -61,6 +50,8 @@ namespace Data_Collector
                 //myData.Enqueue(data);
             });
         }
+
+        /* implement in MeasureLengthDevice.cs */
 
         //private void OnTimedEvent(Object source, ElapsedEventArgs e)
         //{
