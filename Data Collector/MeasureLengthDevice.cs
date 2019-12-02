@@ -37,7 +37,7 @@ namespace Data_Collector
         {
             // virtual device to provide measurements
             dev = new Device();
-            timer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(15).TotalMilliseconds);
+            timer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(4).TotalMilliseconds);
             unitsToUse = unitsOfMeasure.imperial;
             mostRecentMeasure = dev.GetMeasurement();
             dataCaptured = new FixedSizeQueue<int>();
@@ -48,6 +48,9 @@ namespace Data_Collector
 
 
         // methods
+        public string History => PrintValues(dataCaptured);
+
+
         private async void timer_Tick(object state)
         {
             // timer to get new measurement from Devide via GetMeasurement and Enqueue in dataCaptured FixedSizeQueue
@@ -98,6 +101,17 @@ namespace Data_Collector
         public FixedSizeQueue<int> GetRawData()
         {
             throw new NotImplementedException();
+        }
+
+        public string PrintValues(FixedSizeQueue<int> myQueue)
+        {
+            StringBuilder myString = new StringBuilder();
+            foreach (var i in myQueue.q)
+            {
+                myString.Append(i.ToString() + " ");
+            }
+
+            return myString.ToString();
         }
     }
 }

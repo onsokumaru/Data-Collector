@@ -41,7 +41,7 @@ namespace Data_Collector
         //public string PrintValues(FixedSizeQueue<int> myQueue)
         //{
         //    StringBuilder myString = new StringBuilder();
-        //    foreach ( var i in myQueue.q)
+        //    foreach (var i in myQueue.q)
         //    {
         //        myString.AppendLine(i.ToString());
         //    }

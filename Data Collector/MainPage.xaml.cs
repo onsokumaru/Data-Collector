@@ -33,7 +33,8 @@ namespace Data_Collector
             dataCollector = new MeasureLengthDevice();
             displayData = new MainDataDisplay
             {
-                Measurement = dataCollector.MostRecentMeasure
+                Measurement = dataCollector.MostRecentMeasure,
+                History = dataCollector.History
             };
 
             ImperialRB.IsChecked = true;
@@ -44,6 +45,7 @@ namespace Data_Collector
         private void getCurrentDataBtn_Click(object sender, RoutedEventArgs e)
         {
             currentValueOutputTBlk.Text = dataCollector.MostRecentMeasure.ToString();
+            dataHistoryTBox.Text = dataCollector.History;
         }
     }
 }
