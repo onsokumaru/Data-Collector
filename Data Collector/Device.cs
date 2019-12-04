@@ -25,19 +25,6 @@ namespace Data_Collector
             return data;
         }
 
-        //public string History => PrintValues(myData);
-
-        //public string PrintValues(FixedSizeQueue<int> myQueue)
-        //{
-        //    StringBuilder myString = new StringBuilder();
-        //    foreach (var i in myQueue.q)
-        //    {
-        //        myString.AppendLine(i.ToString());
-        //    }
-
-        //    return myString.ToString();
-        //}
-
         private async void timer_Tick(object state)
         {
             // randomly generate new random number and update variable data
@@ -51,15 +38,6 @@ namespace Data_Collector
             });
         }
 
-        /* implement in MeasureLengthDevice.cs */
-
-        //private void OnTimedEvent(Object source, ElapsedEventArgs e)
-        //{
-        //    // example from docs.microsoft.com
-        //    data = rand.Next(1, 11);
-        //    myData.Enqueue(data);
-            
-        //}
 
         // method to stop timer
         //public void TimerStop()
