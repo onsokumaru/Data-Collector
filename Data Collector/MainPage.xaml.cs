@@ -59,5 +59,11 @@ namespace Data_Collector
                 dataHistoryTBox.Text = dataCollector.History.ToString();
             });
         }
+
+        private void StopCollectingBtn_Click(object sender, RoutedEventArgs e)
+        {
+            appTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            CurrentCollectingStateTBox.Text = $"Not Collecting";
+        }
     }
 }
