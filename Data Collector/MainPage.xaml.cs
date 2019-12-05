@@ -27,9 +27,11 @@ namespace Data_Collector
     {
         MeasureLengthDevice dataCollector = null;
         MainDataDisplay displayData = null;
+        Timer appTimer = null;
         public MainPage()
         {
             this.InitializeComponent();
+            appTimer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(4).TotalMilliseconds);
             dataCollector = new MeasureLengthDevice();
             displayData = new MainDataDisplay
             {
@@ -38,7 +40,7 @@ namespace Data_Collector
             };
 
             ImperialRB.IsChecked = true;
-            bool collectingData = true;
+            //bool collectingData = true;
 
         }
 
@@ -46,6 +48,16 @@ namespace Data_Collector
         {
             currentValueOutputTBlk.Text = dataCollector.MostRecentMeasure.ToString();
             dataHistoryTBox.Text = dataCollector.History;
+        }
+
+        private async void timer_Tick(object state)
+        {
+            // timer to get new measurement from Devide via GetMeasurement and Enqueue in dataCaptured FixedSizeQueue
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
+            () => {
+                currentValueOutputTBlk.Text = dataCollector.MostRecentMeasure.ToString();
+                dataHistoryTBox.Text = dataCollector.History.ToString();
+            });
         }
     }
 }
