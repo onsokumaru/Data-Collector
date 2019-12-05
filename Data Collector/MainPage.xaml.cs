@@ -65,5 +65,11 @@ namespace Data_Collector
             appTimer.Change(Timeout.Infinite, Timeout.Infinite);
             CurrentCollectingStateTBox.Text = $"Not Collecting";
         }
+
+        private void StartCollectBtn_Click(object sender, RoutedEventArgs e)
+        {
+            appTimer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(4).TotalMilliseconds);
+            CurrentCollectingStateTBox.Text = $"Collecting";
+        }
     }
 }
