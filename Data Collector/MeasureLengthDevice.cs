@@ -10,11 +10,11 @@ namespace Data_Collector
         const double CENTIMETERS_IN_AN_INCH = 2.54;
         private enum unitsOfMeasure { imperial, metric };
         private unitsOfMeasure unitsToUse;
-        private unitsOfMeasure UnitsToUse
-        {
-            get { return this.unitsToUse; }
-            set { this.unitsToUse = value; }
-        }
+        //private unitsOfMeasure UnitsToUse
+        //{
+        //    get { return this.unitsToUse; }
+        //    set { this.unitsToUse = value; }
+        //}
         // changing dataCaptured to Fixed size queue instead of int array - to make updating easier as well as getting raw data
         // private int[] dataCaptured;
         FixedSizeQueue<int> dataCaptured;
@@ -58,7 +58,7 @@ namespace Data_Collector
         public decimal MetricValue()
         {
             //throw new NotImplementedException();
-            if(unitsToUse == unitsOfMeasure.imperial)
+            if(unitsToUse != unitsOfMeasure.imperial)
             {
                 return (decimal)(mostRecentMeasure * CENTIMETERS_IN_AN_INCH);
             }
@@ -71,7 +71,7 @@ namespace Data_Collector
         public decimal ImperialValue()
         {
             //throw new NotImplementedException();
-            if (unitsToUse == unitsOfMeasure.metric)
+            if (unitsToUse != unitsOfMeasure.metric)
             {
                 return (decimal)mostRecentMeasure; 
             }
@@ -83,14 +83,12 @@ namespace Data_Collector
 
         public void StartCollecting()
         {
-            //throw new NotImplementedException();
-            //dev.TimerStart();
+            timer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(4).TotalMilliseconds);
         }
 
         public void StopCollecting()
         {
-            //throw new NotImplementedException();
-            //dev.TimerStop();
+            timer.Change(Timeout.Infinite, Timeout.Infinite);
         }
 
         public FixedSizeQueue<int> GetRawData()
@@ -107,6 +105,16 @@ namespace Data_Collector
             }
 
             return myString.ToString();
+        }
+
+        public void setUnitImperial()
+        {
+            this.unitsToUse = unitsOfMeasure.imperial;
+        }
+
+        public void setUnitMetric()
+        {
+            this.unitsToUse = unitsOfMeasure.metric;
         }
     }
 }

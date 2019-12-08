@@ -9,17 +9,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <RadioButton x:Name="MetricRB" Content="Metric" Margin="128,113,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="ImperialRB" Content="Imperial" Margin="128,165,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton x:Name="MetricRB" Content="Metric" Margin="128,113,0,0" VerticalAlignment="Top" />
+        <RadioButton x:Name="ImperialRB" Content="Imperial" Margin="128,165,0,0" VerticalAlignment="Top" IsChecked="True" />
         <Button x:Name="StartCollectBtn" Content="Start Collecting Data" Margin="128,241,0,0" VerticalAlignment="Top" Width="166" Click="StartCollectBtn_Click"/>
         <Button x:Name="StopCollectingBtn" Content="Stop Collecting Data" Margin="325,241,0,0" VerticalAlignment="Top" Width="166" Click="StopCollectingBtn_Click"/>
         <TextBlock x:Name="CollectingStateTBlk" HorizontalAlignment="Left" Margin="188,307,0,0" Text="State:" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" RenderTransformOrigin="0.534,0.69" Width="104" TextAlignment="Center"/>
         <TextBox x:Name="CurrentCollectingStateTBox" HorizontalAlignment="Left" Margin="325,300,0,0" Text="Collecting" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.669,-0.406" Width="166" TextAlignment="Center"/>
         <TextBlock x:Name="currentValueTBlk" HorizontalAlignment="Left" Margin="128,373,0,0" Text="Current Value: " TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="171" RenderTransformOrigin="1.155,2.387" TextAlignment="Center"/>
         <TextBlock x:Name="currentValueOutputTBlk" HorizontalAlignment="Left" Margin="325,373,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="105" TextAlignment="Center"/>
-        <Button x:Name="getCurrentDataBtn" Content="Get Most Current Data" Margin="128,425,0,0" VerticalAlignment="Top" Width="363" Click="getCurrentDataBtn_Click"/>
+        <Button x:Name="getCurrentDataBtn" Content="Get Raw Data" Margin="128,425,0,0" VerticalAlignment="Top" Width="363" Click="getCurrentDataBtn_Click"/>
         <TextBox x:Name="dataHistoryTBox" HorizontalAlignment="Left" Margin="188,516,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Height="34" TextAlignment="Center"/>
         <TextBlock x:Name="datacapturedTBlk" HorizontalAlignment="Left" Margin="188,479,0,0" Text="Data Previously Captured" TextWrapping="Wrap" VerticalAlignment="Top" Width="252" TextAlignment="Center"/>
+        <TextBlock x:Name="unitTextBlock" HorizontalAlignment="Left" Margin="445,373,0,0" Text="Inches" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="140"/>
 
     </Grid>
 </Page>

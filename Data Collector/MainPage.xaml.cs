@@ -39,8 +39,6 @@ namespace Data_Collector
                 History = dataCollector.History
             };
 
-            ImperialRB.IsChecked = true;
-            //bool collectingData = true;
 
         }
 
@@ -56,20 +54,24 @@ namespace Data_Collector
             await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
             () => {
                 currentValueOutputTBlk.Text = dataCollector.MostRecentMeasure.ToString();
-                dataHistoryTBox.Text = dataCollector.History.ToString();
+                dataHistoryTBox.Text = dataCollector.History;
             });
         }
 
         private void StopCollectingBtn_Click(object sender, RoutedEventArgs e)
         {
             appTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            dataCollector.StopCollecting();
             CurrentCollectingStateTBox.Text = $"Not Collecting";
         }
 
         private void StartCollectBtn_Click(object sender, RoutedEventArgs e)
         {
-            appTimer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(4).TotalMilliseconds);
+            appTimer.Change(1, 4);
+            //appTimer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(4).TotalMilliseconds);
+            dataCollector.StartCollecting();
             CurrentCollectingStateTBox.Text = $"Collecting";
         }
+
     }
 }

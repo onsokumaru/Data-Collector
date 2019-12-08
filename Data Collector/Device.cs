@@ -38,17 +38,5 @@ namespace Data_Collector
             });
         }
 
-
-        // method to stop timer
-        //public void TimerStop()
-        //{
-        //    timer.Stop();
-        //}
-
-        //// method to start timer if the timer is stopped
-        //public void TimerStart()
-        //{
-        //    timer.Start();
-        //}
     }
 }
