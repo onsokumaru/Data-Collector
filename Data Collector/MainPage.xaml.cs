@@ -44,7 +44,7 @@ namespace Data_Collector
 
         private void getCurrentDataBtn_Click(object sender, RoutedEventArgs e)
         {
-            currentValueOutputTBlk.Text = dataCollector.MostRecentMeasure.ToString();
+            //currentValueOutputTBlk.Text = dataCollector.MostRecentMeasure.ToString();
             dataHistoryTBox.Text = dataCollector.History;
         }
 
@@ -54,7 +54,7 @@ namespace Data_Collector
             await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
             () => {
                 currentValueOutputTBlk.Text = dataCollector.MostRecentMeasure.ToString();
-                dataHistoryTBox.Text = dataCollector.History;
+                //dataHistoryTBox.Text = dataCollector.History;
             });
         }
 
@@ -68,7 +68,6 @@ namespace Data_Collector
         private void StartCollectBtn_Click(object sender, RoutedEventArgs e)
         {
             appTimer.Change(1, 4);
-            //appTimer = new Timer(timer_Tick, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, (int)TimeSpan.FromSeconds(4).TotalMilliseconds);
             dataCollector.StartCollecting();
             CurrentCollectingStateTBox.Text = $"Collecting";
         }
